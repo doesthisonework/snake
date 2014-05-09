@@ -1,13 +1,13 @@
 #snakeBoard {
-  width: 600px;
-  height: 600px;
-/*  border: 1px solid grey;*/
+  width: 525px;
+  height: 525px;
+  border: 10px solid red;
   margin: 0 auto;
-/*  border-radius: 10px;*/
+  border-radius: 10px;
 }
 
-h3 {
-  font-family: sans-serif;
+h1 {
+  font-family: 'Press Start 2P', sans-serif;
   text-align: center;
   color: white;
 }
@@ -18,10 +18,10 @@ body {
 
 .square {
   float: left;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   background-color: #151C54;
-/*  outline: 1px solid black;*/
+  outline: 1px solid black;
 }
 
 .snake {

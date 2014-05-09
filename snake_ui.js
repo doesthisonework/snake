@@ -8,7 +8,7 @@
 
   View.prototype.start = function() {
     var that = this;
-    $('body').keydown(function(e) {
+    $(window).keydown(function(e) {
       if (e.which == 37) {
         console.log("left");
         that.board.snake.turn("W");
@@ -23,51 +23,48 @@
 
     this.renderFirstTime();
 
-    // this.run();
+    this.run();
   }
 
   View.prototype.run = function(){
     var that = this;
-    this.intervalID = setInterval(function(){
+    this.intervalID = window.setInterval(function(){
       console.log("STEP");
       that.step();
-    }, 500);
+    }, 200);
   }
 
   View.prototype.step = function(){
-
     this.board.snake.move();
     if (this.board.checkLoss()) {
       alert("YOU LOSE!");
-      clearInterval(this.intervalID);
+      window.clearInterval(this.intervalID);
     }
     this.render();
   }
 
   View.prototype.renderFirstTime = function() {
-    for (var i = 0; i < 225; i++) {
-      this.$el.append("<div class='square' id='" + i + "'></div>");
-    }
+    var html = "";
+    _.times(15, function(rowNum){
+      html += "<div class='row'>";
+      _.times(15, function(colNum){
+        var pos = rowNum + "_" + colNum; 
+        html += "<div class='square' id='" + pos + "'></div>";
+      })
+      html += "</div";
+    })
+    this.$el.html(html);
   }
 
-
-  View.prototype.render = function(boardString){
-    var boardString = this.board.render();
-    console.log(boardString);
-    // debugger;
-    for (var i = 0; i < boardString.length; i++) {
-      var currentChar = boardString[i];
-      var tile = $("#" + i );
-      console.log(tile);
-      if (currentChar === ".") {
-        tile.removeClass("snake");
-      } else if (currentChar ==="S"){
-        tile.addClass("snake");
+  View.prototype.render = function(){
+    var board = this.board.render();
+    for(var i = 0; i < board.length; i++){
+      for(var j = 0; j < board[i].length; j++){
+        var $square = $('#' + i + '_' + j);
+        board[i][j] === "S" ? $square.addClass("snake") : $square.removeClass("snake");
       }
     }
   }
-
-
 })(this);
 
 // up arrow = 38
