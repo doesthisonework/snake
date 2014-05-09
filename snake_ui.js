@@ -35,7 +35,7 @@
   }
 
   View.prototype.step = function(){
-    this.board.snake.move();
+    this.board.snake.move(this.board.applePos);
     if (this.board.checkLoss()) {
       alert("YOU LOSE!");
       window.clearInterval(this.intervalID);
@@ -62,12 +62,8 @@
       for(var j = 0; j < board[i].length; j++){
         var $square = $('#' + i + '_' + j);
         board[i][j] === "S" ? $square.addClass("snake") : $square.removeClass("snake");
+        board[i][j] === "A" ? $square.addClass("apple") : $square.removeClass("apple");
       }
     }
   }
 })(this);
-
-// up arrow = 38
-// down = 40
-// right= 39
-// left = 37

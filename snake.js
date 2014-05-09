@@ -7,11 +7,13 @@
     this.segments = [[0,0], [0,1], [0,2]];
   }
 
-  Snake.prototype.move = function(){
+  Snake.prototype.move = function(applePos){
     var newSegPos = S.Coord.plus(this.headPos, this.dir);
     this.headPos = newSegPos;
     this.segments.push(newSegPos);
-    this.segments.shift();
+    if(newSegPos[0] !== applePos[0] || newSegPos[1] !== applePos[1]){
+      this.segments.shift();
+    }
   };
 
   Snake.prototype.turn = function(dir){

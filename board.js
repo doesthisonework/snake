@@ -4,8 +4,7 @@
   var Board = S.Board = function(){
     this.snake = new S.Snake();
     this.grid = _makeGrid();
-    // this.intervalID = null;
-
+    this.generateApple();
   }
 
   _makeGrid = function(){
@@ -23,16 +22,34 @@
         this.grid[i][j] = null;
       }
     }
+
+    this.placeApple();
+    
     for (var k = 0; k < this.snake.segments.length; k++){
-      this.grid[this.snake.segments[k][0]][this.snake.segments[k][1]] = "S";
+      pos = [this.snake.segments[k][0], this.snake.segments[k][1]]
+      if(this.grid[pos[0]][pos[1]] === "A"){
+        this.generateApple();
+      }
+      this.grid[pos[0]][pos[1]] = "S";
     }
-    for (var i = 0; i < 15; i++){
-      for (var j = 0; j < 15; j++){
-        if (this.grid[i][j] !== "S") {
-          this.grid[i][j] = null;
-        }
+  }
+
+  Board.prototype.placeApple = function(){
+    pos = this.applePos;
+    this.grid[pos[0]][pos[1]] = "A";
+  }
+
+  Board.prototype.generateApple = function(){
+    pos = []
+    while(pos.length === 0){
+      x = Math.floor(Math.random() * 15);
+      y = Math.floor(Math.random() * 15);
+
+      if(this.grid[x][y] !== "S"){
+        pos = [x,y];
       }
     }
+    this.applePos = pos;
   }
 
   Board.prototype.render = function(){
@@ -41,9 +58,17 @@
   }
 
   Board.prototype.checkLoss = function() {
-    //Snake runs out of bounds
     if (S.Coord.outOfBounds(this.snake.headPos)) {
       return true;
+    }
+    for(var i = 0; i < this.snake.segments.length -1; i++){
+      for(var j = i + 1; j < this.snake.segments.length; j++){
+        seg1 = this.snake.segments[i];
+        seg2 = this.snake.segments[j];
+        if(seg1[0] === seg2[0] && seg1[1] === seg2[1]){
+          return true;
+        }
+      }
     }
   }
 })(this);
