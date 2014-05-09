@@ -16,10 +16,13 @@
     <div id='snakeBoard'>
 
     </div>
+    <div id=btn-wrapper><input type="button" value="Start!" class="btn"></div>
 
     <script>
-    var a = new S.View($("#snakeBoard"));
-    a.start();
+    $('.btn').click(function(){
+      var a = new S.View($("#snakeBoard"));
+      a.start()
+    });
     </script>
   </body>
 </html>

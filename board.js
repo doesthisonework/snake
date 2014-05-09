@@ -40,16 +40,9 @@
   }
 
   Board.prototype.generateApple = function(){
-    pos = []
-    while(pos.length === 0){
-      x = Math.floor(Math.random() * 15);
-      y = Math.floor(Math.random() * 15);
-
-      if(this.grid[x][y] !== "S"){
-        pos = [x,y];
-      }
-    }
-    this.applePos = pos;
+    x = Math.floor(Math.random() * 15);
+    y = Math.floor(Math.random() * 15);
+    this.applePos = [x,y];
   }
 
   Board.prototype.render = function(){

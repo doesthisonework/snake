@@ -1,9 +1,10 @@
 #snakeBoard {
-  width: 525px;
-  height: 525px;
+  width: 450px;
+  height: 450px;
   border: 10px solid brown;
   margin: 0 auto;
   border-radius: 10px;
+  background-color: #151C54;
 }
 
 h1 {
@@ -12,16 +13,21 @@ h1 {
   color: white;
 }
 
+#end {
+  margin-top: 200px;
+}
+
 body {
   background-color: #15541B;
 }
 
 .square {
   float: left;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   background-color: #151C54;
-  outline: 1px solid black;
+/*  outline: 1px solid black;*/
+  border-radius: 5px;
 }
 
 .snake {
@@ -30,4 +36,21 @@ body {
 
 .apple {
   background-color: red;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+
+#btn-wrapper{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 80px;
+}
+
+.btn {
+  font-family: 'Press Start 2P', sans-serif;
+  height: 50px;
+  width: 100px;
+  border: 3px solid grey;
+  border-radius: 10px;
 }

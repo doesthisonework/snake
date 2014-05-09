@@ -29,16 +29,16 @@
   View.prototype.run = function(){
     var that = this;
     this.intervalID = window.setInterval(function(){
-      console.log("STEP");
       that.step();
     }, 200);
   }
 
-  View.prototype.step = function(){
+  View.prototype.step = function(){ 
     this.board.snake.move(this.board.applePos);
     if (this.board.checkLoss()) {
-      alert("YOU LOSE!");
+      this.$el.empty().html("<h1 id='end'>YOUR SNAKE DIED.</h1>");
       window.clearInterval(this.intervalID);
+      return;
     }
     this.render();
   }
