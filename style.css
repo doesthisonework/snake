@@ -1,4 +1,4 @@
-#snakeBoard {
+#snakeboard {
   width: 450px;
   height: 450px;
   border: 10px solid brown;
@@ -11,9 +11,11 @@ h1 {
   font-family: 'Press Start 2P', sans-serif;
   text-align: center;
   color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-#end {
+.board-text {
   margin-top: 200px;
 }
 

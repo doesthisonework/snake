@@ -20,7 +20,7 @@
 
   Coord.plus = function(coords, dir) {
     var mod = DIRS[dir];
-    var newCoords = []
+    var newCoords = [];
     newCoords[0] = coords[0] + mod[0];
     newCoords[1] = coords[1] + mod[1];
     return newCoords;
@@ -33,6 +33,6 @@
 
   Coord.oppositeDir = function(dir) {
     return OPPOSITE_DIRS[dir];
-  }
+  };
 
 })(this);

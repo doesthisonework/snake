@@ -5,7 +5,7 @@
     this.dir = "S";
     this.headPos = [0,2];
     this.segments = [[0,0], [0,1], [0,2]];
-  }
+  };
 
   Snake.prototype.move = function(applePos){
     var newSegPos = S.Coord.plus(this.headPos, this.dir);

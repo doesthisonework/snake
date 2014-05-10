@@ -13,14 +13,15 @@
   </head>
   <body>
     <h1>Snake!!11!</h1>
-    <div id='snakeBoard'>
-
+    <div id='snakeboard'>
+      <h1 class="board-text">Press Start!<br><br>
+      Arrow keys turn the snake.</h1>
     </div>
     <div id=btn-wrapper><input type="button" value="Start!" class="btn"></div>
 
     <script>
     $('.btn').click(function(){
-      var a = new S.View($("#snakeBoard"));
+      var a = new S.View($("#snakeboard"));
       a.start()
     });
     </script>
