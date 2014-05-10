@@ -17,6 +17,8 @@
   };
 
   Snake.prototype.turn = function(dir){
-    this.dir = dir;
+    if(dir !== S.Coord.oppositeDir(this.dir)){
+      this.dir = dir;
+    }
   };
 })(this);
