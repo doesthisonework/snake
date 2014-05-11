@@ -7,18 +7,17 @@
   };
 
   View.prototype.start = function() {
-    var that = this;
     $(window).keydown(function(e) {
       if (e.which == 37) {
-        that.board.snake.turn("W");
+        this.board.snake.turn("W");
       } else if (e.which == 38) {
-        that.board.snake.turn("N");
+        this.board.snake.turn("N");
       } else if (e.which == 39) {
-        that.board.snake.turn("E");
+        this.board.snake.turn("E");
       } else if (e.which == 40) {
-        that.board.snake.turn("S");
+        this.board.snake.turn("S");
       }
-    });
+    }.bind(this));
 
     this.renderFirstTime();
 
@@ -26,10 +25,9 @@
   };
 
   View.prototype.run = function(){
-    var that = this;
     this.intervalID = window.setInterval(function(){
-      that.step();
-    }, 200);
+      this.step();
+    }.bind(this), 200);
   };
 
   View.prototype.step = function(){ 
