@@ -4,18 +4,25 @@
     this.$el = rootEl;
     this.board = new S.Board();
     this.intervalID = null;
+    this.allReadyMoved = false;
   };
 
   View.prototype.start = function() {
     $(window).keydown(function(e) {
-      if (e.which == 37) {
-        this.board.snake.turn("W");
-      } else if (e.which == 38) {
-        this.board.snake.turn("N");
-      } else if (e.which == 39) {
-        this.board.snake.turn("E");
-      } else if (e.which == 40) {
-        this.board.snake.turn("S");
+      if(this.allReadyMoved === false){
+        if (e.which == 37) {
+          this.board.snake.turn("W");
+          this.allReadyMoved = true
+        } else if (e.which == 38) {
+          this.board.snake.turn("N");
+          this.allReadyMoved = true
+        } else if (e.which == 39) {
+          this.board.snake.turn("E");
+          this.allReadyMoved = true
+        } else if (e.which == 40) {
+          this.board.snake.turn("S");
+          his.allReadyMoved = true
+        }
       }
     }.bind(this));
 
@@ -31,6 +38,7 @@
   };
 
   View.prototype.step = function(){ 
+    this.allReadyMoved = false
     this.board.snake.move(this.board.applePos);
     if (this.board.checkLoss()) {
       this.$el.empty().html("<h1 class='board-text'>YOUR SNAKE DIED.</h1>");
