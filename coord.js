@@ -27,8 +27,8 @@
   };
 
   Coord.outOfBounds = function(pos) {
-    return (pos[0] < 0 || pos[0] > 14 ||
-            pos[1] < 0 || pos[1] > 14 );
+    return (pos[0] < 0 || pos[0] > 19 ||
+            pos[1] < 0 || pos[1] > 19 );
   };
 
   Coord.oppositeDir = function(dir) {

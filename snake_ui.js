@@ -21,7 +21,7 @@
           this.allReadyMoved = true
         } else if (e.which == 40) {
           this.board.snake.turn("S");
-          his.allReadyMoved = true
+          this.allReadyMoved = true
         }
       }
     }.bind(this));
@@ -34,7 +34,7 @@
   View.prototype.run = function(){
     this.intervalID = window.setInterval(function(){
       this.step();
-    }.bind(this), 200);
+    }.bind(this), 100);
   };
 
   View.prototype.step = function(){ 
@@ -50,9 +50,9 @@
 
   View.prototype.renderFirstTime = function() {
     var html = "";
-    _.times(15, function(rowNum){
+    _.times(20, function(rowNum){
       html += "<div class='row'>";
-      _.times(15, function(colNum){
+      _.times(20, function(colNum){
         var pos = rowNum + "_" + colNum; 
         html += "<div class='square' id='" + pos + "'></div>";
       });

@@ -9,16 +9,16 @@
 
   function _makeGrid(){
     var grid = [];
-    for (var i = 0; i < 15; i++) {
-  		var row = new Array(15);
+    for (var i = 0; i < 20; i++) {
+  		var row = new Array(20);
   		grid.push(row);
   	}
     return grid;
   }
 
   Board.prototype.updateBoard = function(){
-    for (var i = 0; i < 15; i++){
-      for (var j = 0; j < 15; j++){
+    for (var i = 0; i < 20; i++){
+      for (var j = 0; j < 20; j++){
         this.grid[i][j] = null;
       }
     }
@@ -43,8 +43,8 @@
   };
 
   Board.prototype.generateApple = function(){
-    var x = Math.floor(Math.random() * 15);
-    var y = Math.floor(Math.random() * 15);
+    var x = Math.floor(Math.random() * 20);
+    var y = Math.floor(Math.random() * 20);
     this.applePos = [x,y];
   };
 
